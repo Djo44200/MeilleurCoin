@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+    <h1>Rechercher une annonce</h1>
+
+    {% for Ad in tableauAnnonce %}
+        <a href="{{ path('recherche') }}?id={{ Ad.id  }}"> {{ Ad.titre }} {{ Ad.prix }}   </a> <br>
+    {% endfor %}
+
+
+
+
+{% endblock %}
