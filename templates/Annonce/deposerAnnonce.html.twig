@@ -5,26 +5,44 @@
 {% block body %}
     <h1>Déposer une annonce</h1>
 
-
-    {{ form_start(formDeposer) }}
-    <div>
-        {{ form_row(formDeposer.titre) }}
+    <div class="form-group ">
+    {{ form_start(formDepose) }}
 
 
-        {{ form_row(formDeposer.marque) }}
+        {{ form_label(formDepose.titre)}}
+        {{form_widget(formDepose.titre)}}
+        {{ form_errors(formDepose.titre) }}
+    </div>
 
-        {{ form_row(formDeposer.typePermis) }}
+        <div class="form-group ">
 
-        {{ form_row(formDeposer.typeVehicule) }}
+            {{ form_label(formDepose.description)}}
+            {{form_widget(formDepose.description)}}
+            {{ form_errors(formDepose.description) }}
+        </div>
+        <div class="form-group ">
 
-        {{ form_row(formDeposer.immatriculation) }}
+            {{ form_label(formDepose.ville)}}
+            {{form_widget(formDepose.ville)}}
+            {{ form_errors(formDepose.ville) }}
+        </div>
 
-        {{ form_row(formDeposer.nbrePlace) }}
+        <div class="form-group ">
 
-        {{ form_row(formDeposer.prix) }}
+            {{ form_label(formDepose.cp)}}
+            {{form_widget(formDepose.cp)}}
+            {{ form_errors(formDepose.cp) }}
+        </div>
+
+        <div class="form-group ">
+
+            {{ form_label(formDepose.prix)}}
+            {{form_widget(formDepose.prix)}}
+            {{ form_errors(formDepose.prix) }}
+        </div>
 
 
-        {{ form_row(formDeposer.submit) }}
+        {{ form_row(formDepose.submit) }}
 
 
         {% for label, messages in app.flashes %}
@@ -38,7 +56,7 @@
 
 
     </div>
-    {{ form_end(formDeposer) }}
+    {{ form_end(formDepose) }}
 
 
 

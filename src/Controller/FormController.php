@@ -5,8 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Ad;
-use App\Entity\Message;
-use App\Form\MessageType;
+use App\Form\AdType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +45,7 @@ class FormController extends Controller
             return $this->redirectToRoute("form_deposerAnnonce");
         }
 
-        return $this->render('Annonce/deposerAnnonce.html.twig', ["formDeposer" => $formAnnonce->createView()]);
+        return $this->render('Annonce/deposerAnnonce.html.twig', ["formDepose" => $formAnnonce->createView()]);
     }
 
 

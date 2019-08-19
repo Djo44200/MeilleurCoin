@@ -20,7 +20,7 @@ class AdType extends AbstractType
                 "trim" => true,
                 "label" => "Titre",
     ])
-            ->add('description',TextType::class,[
+            ->add('description',TextareaType::class,[
                 "label" => "Description",
             ])
             ->add('ville',TextType::class,[
@@ -33,11 +33,12 @@ class AdType extends AbstractType
             ])
             ->add('prix',MoneyType::class,[
                 "trim" => true,
-                "label" => "Prix",
+                "label" => "Prix en ",
             ])
             //->add('dateCreation')
-             ->add('submit', SubmitType::class);
-        ;
+             ->add('submit', SubmitType::class, [
+
+                "label" => "Envoyer",]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
