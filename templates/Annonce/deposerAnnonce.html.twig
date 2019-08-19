@@ -6,4 +6,41 @@
     <h1>Déposer une annonce</h1>
 
 
+    {{ form_start(formDeposer) }}
+    <div>
+        {{ form_row(formDeposer.titre) }}
+
+
+        {{ form_row(formDeposer.marque) }}
+
+        {{ form_row(formDeposer.typePermis) }}
+
+        {{ form_row(formDeposer.typeVehicule) }}
+
+        {{ form_row(formDeposer.immatriculation) }}
+
+        {{ form_row(formDeposer.nbrePlace) }}
+
+        {{ form_row(formDeposer.prix) }}
+
+
+        {{ form_row(formDeposer.submit) }}
+
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+
+
+    </div>
+    {{ form_end(formDeposer) }}
+
+
+
+
 {% endblock %}

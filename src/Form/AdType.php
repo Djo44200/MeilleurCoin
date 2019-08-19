@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Ad;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,6 +36,7 @@ class AdType extends AbstractType
                 "label" => "Prix",
             ])
             //->add('dateCreation')
+             ->add('submit', SubmitType::class);
         ;
     }
 
