@@ -23,6 +23,10 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
+    .addEntry('bootstrap', './assets/css/bootstrap.min.css')
+    .addEntry('jquery', './assets/js/jquery-3.3.1.slim.min.js')
+    .addEntry('popper', './assets/js/popper.min.js')
+    .addEntry('jsBootstrap', './assets/js/bootstrap.min.js')
     .addEntry('app', './assets/js/app.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
