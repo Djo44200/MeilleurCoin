@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdRepository")
  */
@@ -12,32 +12,41 @@ class Ad
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champ titre ne peut pas être vide !")
+     *
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank(message="Le champ description ne peut pas être vide !")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Le champ ville ne peut pas être vide !")
      */
     private $ville;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\Regex("/[0-9]{5}/",message="Le champ code postal doit être au bon format !")
+     * @Assert\NotBlank(message="Le champ code postal ne peut pas être vide !")
      */
     private $cp;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\GreaterThan(0, message="Le prix doit être positif")
+     * @Assert\NotBlank(message="Le champ prix ne peut pas être vide !")
      */
     private $prix;
 
@@ -121,5 +130,11 @@ class Ad
         $this->dateCreation = $dateCreation;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        // Initialisation
+        $this->dateCreation = new \DateTime('now');
     }
 }
