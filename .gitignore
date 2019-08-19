@@ -35,6 +35,8 @@
 /app/phpunit.xml
 /phpunit.xml
 
+node_modules
+
 # Build data
 /build/
 
