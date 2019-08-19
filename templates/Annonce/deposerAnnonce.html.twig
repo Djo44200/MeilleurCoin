@@ -10,39 +10,39 @@
 
 
         {{ form_label(formDepose.titre)}}
-        {{form_widget(formDepose.titre)}}
+        {{form_widget(formDepose.titre, {'attr': {'class':'form-control'}})}}
         {{ form_errors(formDepose.titre) }}
     </div>
 
         <div class="form-group ">
 
             {{ form_label(formDepose.description)}}
-            {{form_widget(formDepose.description)}}
+            {{form_widget(formDepose.description, {'attr': {'class':'form-control'}})}}
             {{ form_errors(formDepose.description) }}
         </div>
         <div class="form-group ">
 
             {{ form_label(formDepose.ville)}}
-            {{form_widget(formDepose.ville)}}
+            {{form_widget(formDepose.ville, {'attr': {'class':'form-control'}})}}
             {{ form_errors(formDepose.ville) }}
         </div>
 
         <div class="form-group ">
 
             {{ form_label(formDepose.cp)}}
-            {{form_widget(formDepose.cp)}}
+            {{form_widget(formDepose.cp, {'attr': {'class':'form-control'}})}}
             {{ form_errors(formDepose.cp) }}
         </div>
 
         <div class="form-group ">
 
             {{ form_label(formDepose.prix)}}
-            {{form_widget(formDepose.prix)}}
+            {{form_widget(formDepose.prix, {'attr': {'class':'form-control'}})}}
             {{ form_errors(formDepose.prix) }}
         </div>
 
 
-        {{ form_row(formDepose.submit) }}
+        {{ form_row(formDepose.submit, {'attr': {'class':'btn btn-outline-success'}}) }}
 
 
         {% for label, messages in app.flashes %}
