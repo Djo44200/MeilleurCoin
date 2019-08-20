@@ -37,7 +37,7 @@ class AnnonceController extends Controller
     public function detailAnnonce(EntityManagerInterface $entityManager, Request $request)
     {
         $id=$request->query->get('id');
-        $ad = new Ad();
+
         if ($id){
             $annonce = $entityManager->getRepository('App:Ad') ->annonceById($id);
         }
@@ -46,9 +46,8 @@ class AnnonceController extends Controller
             throw  $this->createNotFoundException('Cette annonce n\'existe pas.');
         }
 
-        return $this->render('Annonce/detailAnnonce.html.twig', array(
-            'detailAnnonce' => $annonce,
-        ));
+        return $this->render('Annonce/detailAnnonce.html.twig', ['detailAnnonce' => $annonce
+        ]);
     }
 
 }

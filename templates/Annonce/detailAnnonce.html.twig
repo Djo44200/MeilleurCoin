@@ -3,7 +3,7 @@
 
 {% block body %}
 <br>
- <div class="card border-info mb-12 text-center" style="max-width: 18rem;">
+ <div class="card border-info mb-12 text-center mx-auto" style="max-width: 18rem;">
         <div class="card-header">Annonce n° {{ detailAnnonce.id }}</div>
         <div class="card-body">
             <h5 class="card-title">{{ detailAnnonce.titre }}</h5>
@@ -11,6 +11,7 @@
             <p class="card-text">{{ detailAnnonce.cp }} - {{ detailAnnonce.ville }}</p>
             <p class="card-text">{{ detailAnnonce.prix }} €</p>
             <p class="card-text">{{   detailAnnonce.dateCreation | date('d/m/Y') }}</p>
+            <a href="#" class="btn btn-primary">Réserver</a>
         </div>
     </div>
 
