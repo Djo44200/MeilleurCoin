@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Ad;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * @method Ad|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,25 +27,29 @@ class AdRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function annonceById($id) : ?Ad {
+
+        try {
+            return $this->createQueryBuilder('a')
+                ->where('a.id=:id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+        }
+    }
 
 
 
-    // /**
-    //  * @return Ad[] Returns an array of Ad objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllOrderBy()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('a.dateCreation','DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Ad

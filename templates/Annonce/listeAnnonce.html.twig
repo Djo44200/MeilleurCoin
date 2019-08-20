@@ -6,7 +6,7 @@
     <h1>Rechercher une annonce</h1>
 
     {% for Ad in tableauAnnonce %}
-        <a href="{{ path('recherche') }}?id={{ Ad.id  }}"> {{ Ad.titre }} - {{ Ad.prix }}  €  - {{ Ad.description }}</a> <br>
+        <a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} - {{ Ad.prix }}  €  - {{ Ad.description }} - {{   Ad.dateCreation | date('d/m/Y') }}</a> <br>
     {% endfor %}
 
 
