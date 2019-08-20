@@ -9,21 +9,25 @@
         <thead>
     <tr>
         <th>Titre</th>
-        <th>Prix</th>
         <th>Description</th>
+        <th>Ville</th>
+        <th>Code postal</th>
+        <th>Prix</th>
         <th>Publié</th>
     </tr>
         </thead>
 
     {% for Ad in tableauAnnonce %}
-        <a href="{{ path('detail') }}?id={{ Ad.id  }}">
+
         <tr>
-            <td>{{ Ad.titre }}</td>
-            <td>{{ Ad.prix }} €</td>
+            <td><a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} </a></td>
             <td>{{ Ad.description }}</td>
-            <td>{{   Ad.dateCreation | date('d/m/Y') }}</td>
+            <td>{{ Ad.ville }}</td>
+            <td>{{ Ad.cp }}</td>
+            <td>{{ Ad.prix }} €</td>
+            <td>{{   Ad.dateCreation | date('d/m/Y') }} à {{   Ad.dateCreation | date('H:i:s', "Europe/Paris") }}</td>
         </tr>
-        </a>
+
 
 
     {% endfor %}
