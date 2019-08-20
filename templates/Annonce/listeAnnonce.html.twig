@@ -13,6 +13,7 @@
         <th>Ville</th>
         <th>Code postal</th>
         <th>Prix</th>
+        <th>Catégorie</th>
         <th>Publié</th>
     </tr>
         </thead>
@@ -25,6 +26,7 @@
             <td>{{ Ad.ville }}</td>
             <td>{{ Ad.cp }}</td>
             <td>{{ Ad.prix }} €</td>
+            <td>{{ Ad.categorie.getLibelle() }}</td>
             <td>{{   Ad.dateCreation | date('d/m/Y') }} à {{   Ad.dateCreation | date('H:i:s', "Europe/Paris") }}</td>
         </tr>
 
