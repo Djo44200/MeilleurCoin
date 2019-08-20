@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Déposer une annonce</h1>
-
+    <div class="container-fluid">
     <div class="form-group ">
     {{ form_start(formDepose) }}
 
@@ -49,7 +49,7 @@
         </div>
 
 
-        {{ form_row(formDepose.submit, {'attr': {'class':'btn btn-outline-success'}}) }}
+        {{ form_row(formDepose.submit, {'attr': {'class':'btn btn-outline-success '}}) }}
 
 
         {% for label, messages in app.flashes %}
@@ -61,7 +61,7 @@
         {% endfor %}
 
 
-
+    </div>
     </div>
     {{ form_end(formDepose) }}
 
