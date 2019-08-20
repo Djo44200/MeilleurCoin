@@ -53,7 +53,32 @@ class Ad
     /**
      * @ORM\Column(type="datetime")
      */
+
+
     private $dateCreation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie",inversedBy="ads")
+     * @Assert\NotBlank(message="Le champ titre ne peut pas être vide !")
+     *
+     */
+    private $categorie;
+
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param mixed $categorie
+     */
+    public function setCategorie($categorie): void
+    {
+        $this->categorie = $categorie;
+    }
 
     public function getId(): ?int
     {
