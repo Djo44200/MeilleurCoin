@@ -4,11 +4,30 @@
 
 {% block body %}
     <h1>Rechercher une annonce</h1>
+    <br>
+    <table class="table">
+        <thead>
+    <tr>
+        <th>Titre</th>
+        <th>Prix</th>
+        <th>Description</th>
+        <th>Publié</th>
+    </tr>
+        </thead>
 
     {% for Ad in tableauAnnonce %}
-        <a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} - {{ Ad.prix }}  €  - {{ Ad.description }} - {{   Ad.dateCreation | date('d/m/Y') }}</a> <br>
-    {% endfor %}
+        <a href="{{ path('detail') }}?id={{ Ad.id  }}">
+        <tr>
+            <td>{{ Ad.titre }}</td>
+            <td>{{ Ad.prix }} €</td>
+            <td>{{ Ad.description }}</td>
+            <td>{{   Ad.dateCreation | date('d/m/Y') }}</td>
+        </tr>
+        </a>
 
+
+    {% endfor %}
+    </table>
 
 
 
