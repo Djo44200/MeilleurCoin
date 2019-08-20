@@ -15,6 +15,7 @@
                     Catégorie
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('recherche') }}">Toutes</a>
                     {% for Categorie in tableauCate %}
                     <a class="dropdown-item" href="{{ path('recherche') }}?cate={{ Categorie.id  }}">{{ Categorie.libelle  }}</a>
                     {% endfor %}

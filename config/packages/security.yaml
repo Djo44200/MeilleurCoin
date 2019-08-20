@@ -1,4 +1,8 @@
 security:
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: 'argon2i'
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: null }

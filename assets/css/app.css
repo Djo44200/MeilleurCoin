@@ -1,7 +1,3 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 h1 { text-align: center !important; }
-/* Quand le curseur est sur un champ */
-input:focus, textarea:focus
-{
-    background-color: #7FC6BC;
-}
+
