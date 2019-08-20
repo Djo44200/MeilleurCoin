@@ -27,6 +27,9 @@ class AnnonceController extends Controller
     public function touteAnnonce(EntityManagerInterface $entityManager, Request $request)
     {
         $cate = $request->query->get('cate');
+
+        $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
+
         // Si id existe alors affichage des données dans le formulaire
         if ($cate) {
             $req = $entityManager->getRepository('App:Ad')->triParCate($cate);
@@ -35,7 +38,7 @@ class AnnonceController extends Controller
 
         $req = $entityManager->getRepository('App:Ad')->findAllOrderBy();
     }
-        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req]);
+        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req, "tableauCate" =>$listeCate]);
 }
 
     /**
