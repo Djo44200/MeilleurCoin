@@ -29,6 +29,7 @@ class AnnonceController extends Controller
         $cate = $request->query->get('cate');
 
         $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
+        $nombreAnnonce = $entityManager->getRepository('App:Ad')->nombreAnnonces();
 
         // Si id existe alors affichage des données dans le formulaire
         if ($cate) {
@@ -38,7 +39,7 @@ class AnnonceController extends Controller
 
         $req = $entityManager->getRepository('App:Ad')->findAllOrderBy();
     }
-        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req, "tableauCate" =>$listeCate]);
+        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req, "tableauCate" =>$listeCate, "nombreAnnonce" => $nombreAnnonce]);
 }
 
     /**

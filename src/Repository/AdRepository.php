@@ -60,7 +60,17 @@ class AdRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-
+    public function nombreAnnonces($categorie)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a.titre, a.prix')
+            ->where('a.categorie=:cate')
+            ->setParameter('cate', $categorie)
+            ->orderBy('a.dateCreation','DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     /*
     public function findOneBySomeField($value): ?Ad
     {
