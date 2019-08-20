@@ -12,7 +12,8 @@
         "symfony/security-bundle": "3.4.*",
         "symfony/webpack-encore-bundle": "^1.6",
         "symfony/yaml": "3.4.*",
-        "twbs/bootstrap": "4.3.1"
+        "twbs/bootstrap": "4.3.1",
+      "ext-http": "*"
     },
     "require-dev": {
         "sensio/framework-extra-bundle": "^5.4",

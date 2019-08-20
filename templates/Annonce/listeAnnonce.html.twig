@@ -16,7 +16,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for Ad in tableauAnnonce %}
-                    <a class="dropdown-item" href="#">{{Ad.categorie.getLibelle()}}</a>
+                    <a class="dropdown-item" href="{{ path('recherche') }}?cate={{ Ad.categorie.id()  }}">{{Ad.categorie.getLibelle()}}</a>
                     {% endfor %}
                 </div>
             </div>

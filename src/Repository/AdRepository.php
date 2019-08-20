@@ -50,6 +50,16 @@ class AdRepository extends ServiceEntityRepository
         ;
     }
 
+    public function triParCate($categorie)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.categorie=:cate')
+            ->setParameter('cate', $categorie)
+            ->orderBy('a.dateCreation','DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Ad
