@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -46,7 +47,7 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="Le champ mot de passe ne peut pas être vide !")
-     * 
+     *
      */
     private $password;
 
@@ -56,6 +57,32 @@ class User implements UserInterface
      */
 
     private $DateRegistered;
+
+    /**
+     * @var string
+     *
+     */
+
+    private $plainPassword;
+
+    /**
+     * @var string
+     *
+     * @SecurityAssert\UserPassword(
+     *     message = "USER_OLD_PASSWORD_INVALID_DATA",
+     *     groups={"password"}
+     * )
+     */
+    protected $oldPassword;
+
+
+    public function __construct()
+    {
+        // Roles des utilisateurs
+        $this->roles = ['ROLE_USER'];
+    }
+
+
 
 
     public function getPseudo()
@@ -106,11 +133,7 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = ['ROLE_USER','IS_AUTHENTICATED_ANONYMOUSLY','ROLE_ADMIN'];
-
-        return array_unique($roles);
+        return $roles = $this->roles;
     }
 
     public function setRoles(array $roles): self
@@ -168,4 +191,43 @@ class User implements UserInterface
     {
         $this->DateRegistered = $DateRegistered;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+    /**
+     * @param string $plainPassword
+     */
+    /**
+     * @param string|null $plainPassword
+     */
+    public function setPlainPassword(?string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+    /**
+     * @return string
+     */
+    public function getOldPassword(): string
+    {
+        return $this->oldPassword;
+    }
+
+    /**
+     * @param string $oldPassword
+     */
+    public function setOldPassword(string $oldPassword): void
+    {
+        $this->oldPassword = $oldPassword;
+    }
+
+
+
+
+
 }
+
