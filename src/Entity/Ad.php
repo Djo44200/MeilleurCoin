@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdRepository")
  */
@@ -72,7 +73,12 @@ class Ad
      */
     private $users;
 
-
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="annonces")
+     *@ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * @return mixed
@@ -178,7 +184,7 @@ class Ad
 
     public function addUser(User $user)
     {
-        $user->addArticle($this); // synchronously updating inverse side
+        //$user->addUser($this); // synchronously updating inverse side
         $this->users[] = $user;
     }
 
@@ -189,6 +195,22 @@ class Ad
         // Initialisation
         $this->dateCreation = new \DateTime('now');
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
 

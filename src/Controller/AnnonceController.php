@@ -62,5 +62,30 @@ class AnnonceController extends Controller
         ]);
     }
 
+    /**
+     * @Route ("mesAnnonces",name="mesAnnonces")
+     *
+     */
+    public function mesAnnonces(EntityManagerInterface $entityManager, Request $request)
+    {
 
+
+        $cate = $request->query->get('cate');
+        //  Avoir la liste des catégories
+        $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
+
+        if ($cate) {
+            $req = $entityManager->getRepository('App:Ad')->triParCate($cate);
+        }
+        if (!$cate) {
+
+            $req = $entityManager->getRepository('App:Ad')->findAllOrderBy();
+        }
+
+        $listeAnnonce = $entityManager->getRepository('App:Ad') ->annonceByUser($this->getUser());
+
+
+        return $this->render('Annonce/mesAnnonces.html.twig', ['listeAnnonce' => $listeAnnonce, "tableauCate" =>$listeCate
+        ]);
+    }
 }

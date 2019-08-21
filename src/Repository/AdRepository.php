@@ -40,6 +40,18 @@ class AdRepository extends ServiceEntityRepository
         }
     }
 
+    public function annonceByUser($idUser) : ?array {
+
+        try {
+            return $this->createQueryBuilder('a')
+                ->where('a.user=:id')
+                ->setParameter('id', $idUser)
+                ->getQuery()
+                ->getResult();
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
 
 
     public function findAllOrderBy()

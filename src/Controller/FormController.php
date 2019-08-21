@@ -34,6 +34,8 @@ class FormController extends Controller
 
         if ($formAnnonce->isSubmitted() && $formAnnonce->isValid()) {
 
+            $user = $this->getUser();
+            $annonce->setUser($user);
             // Message de confirmation
             $this->addFlash("success", "Votre annonce a été enregistré !");
 

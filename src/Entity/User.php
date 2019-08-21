@@ -81,7 +81,12 @@ class User implements UserInterface
 
     private $ads;
 
-
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Ad",mappedBy="user")
+     * @ORM\JoinColumn(name="user-id", referencedColumnName="id")
+     */
+    private $annonces;
 
     public function __construct()
     {
@@ -89,6 +94,7 @@ class User implements UserInterface
         $this->roles = ['ROLE_USER'];
         $this->DateRegistered = new \DateTime('now');
         $this->ads = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->annonces = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -254,6 +260,22 @@ class User implements UserInterface
     public function addAdd(Ad $ad)
     {
         $this->ads[] = $ad;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAnnonces(): ArrayCollection
+    {
+        return $this->annonces;
+    }
+
+    /**
+     * @param ArrayCollection $annonces
+     */
+    public function setAnnonces(ArrayCollection $annonces): void
+    {
+        $this->annonces = $annonces;
     }
 
 

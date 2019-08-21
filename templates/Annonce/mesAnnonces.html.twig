@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+    <h1>Mes annonces</h1>
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Catégories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('mesAnnonces') }}">TOUTES</a>
+                        {% for Categorie in tableauCate %}
+                            <a class="dropdown-item" href="{{ path('mesAnnonces') }}?cate={{ Categorie.id }}">{{ Categorie.libelle }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </nav>
+    <br>
+    {% if listeAnnonce|length >0 %}
+        {{ listeAnnonce | length }} annonce{% if listeAnnonce|length >2 %}s {% endif %} trouvé{% if listeAnnonce|length >2 %}s {% endif %}
+    {% endif %}
+    <br><br>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Publié</th>
+            </tr>
+            </thead>
+
+            {% for Ad in listeAnnonce %}
+
+                <tr>
+                    <td><a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} </a></td>
+                    <td>{{ Ad.description }}</td>
+                    <td>{{ Ad.ville }}</td>
+                    <td>{{ Ad.cp }}</td>
+                    <td>{{ Ad.prix }} €</td>
+                    <td>{{ Ad.categorie.getLibelle() }}</td>
+                    <td>{{   Ad.dateCreation | date('d/m/Y') }} à {{   Ad.dateCreation | date('H:i:s', "Europe/Paris") }}</td>
+                </tr>
+
+
+
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+{% endblock %}
