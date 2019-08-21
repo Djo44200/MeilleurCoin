@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Ad;
+use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
@@ -60,15 +61,14 @@ class AdRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-    public function nombreAnnonces($categorie)
+    public function nombreAnnonces($categorie) :?int
     {
         return $this->createQueryBuilder('a')
-            ->select('a.titre, a.prix')
+            ->select('count (a.id)')
             ->where('a.categorie=:cate')
             ->setParameter('cate', $categorie)
-            ->orderBy('a.dateCreation','DESC')
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult()
             ;
     }
     /*
