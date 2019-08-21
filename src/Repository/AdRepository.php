@@ -63,13 +63,15 @@ class AdRepository extends ServiceEntityRepository
     }
     public function nombreAnnonces($categorie) :?int
     {
-        return $this->createQueryBuilder('a')
-            ->select('count (a.id)')
-            ->where('a.categorie=:cate')
-            ->setParameter('cate', $categorie)
-            ->getQuery()
-            ->getSingleScalarResult()
-            ;
+        try {
+            return $this->createQueryBuilder('a')
+                ->select('count (a.id)')
+                ->where('a.categorie=:cate')
+                ->setParameter('cate', $categorie)
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+        }
     }
     /*
     public function findOneBySomeField($value): ?Ad

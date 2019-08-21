@@ -27,8 +27,6 @@ class AnnonceController extends Controller
     public function touteAnnonce(EntityManagerInterface $entityManager, Request $request)
     {
         $cate = $request->query->get('cate');
-        //  Avoir le nombre d'annonce par catégorie
-        $nombreAnnonce = $entityManager->getRepository('App:Ad')->nombreAnnonces($cate);
         //  Avoir la liste des catégories
         $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
 
@@ -41,7 +39,7 @@ class AnnonceController extends Controller
 
         $req = $entityManager->getRepository('App:Ad')->findAllOrderBy();
     }
-        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req, "tableauCate" =>$listeCate, "nombreAnnonce" => $nombreAnnonce]);
+        return $this->render('Annonce/listeAnnonce.html.twig', ["tableauAnnonce" => $req, "tableauCate" =>$listeCate]);
 }
 
     /**

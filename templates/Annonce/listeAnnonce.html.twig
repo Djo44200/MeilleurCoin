@@ -18,7 +18,7 @@
                         Catégories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('recherche') }}">Toutes</a>
+                        <a class="dropdown-item" href="{{ path('recherche') }}">TOUTES</a>
                         {% for Categorie in tableauCate %}
                             <a class="dropdown-item" href="{{ path('recherche') }}?cate={{ Categorie.id }}">{{ Categorie.libelle }}</a>
                         {% endfor %}
@@ -32,7 +32,7 @@
         </div>
     </nav>
     <br>
-   {{ nombreAnnonce }} annonces trouvé(s)
+     {{ tableauAnnonce | length }} annonce(s) trouvé(s)
     <br><br>
     <div class="table-responsive">
     <table class="table">
