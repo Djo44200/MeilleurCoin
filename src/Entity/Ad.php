@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -63,6 +64,15 @@ class Ad
      *
      */
     private $categorie;
+
+    /**
+     * Plusieurs annonces peuvent avoir plusieurs users.
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="ads")
+     */
+    private $users;
+
+
 
     /**
      * @return mixed
@@ -157,9 +167,32 @@ class Ad
         return $this;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getUsers(): ArrayCollection
+    {
+        return $this->users;
+    }
+
+
+    public function addUser(User $user)
+    {
+        $user->addArticle($this); // synchronously updating inverse side
+        $this->users[] = $user;
+    }
+
+
+
     public function __construct()
     {
         // Initialisation
         $this->dateCreation = new \DateTime('now');
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
+
+
+
 }

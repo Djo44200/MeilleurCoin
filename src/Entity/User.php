@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -72,12 +73,22 @@ class User implements UserInterface
      */
     protected $oldPassword;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="ads")
+     * @ORM\JoinTable(name="Users_Ads")
+     */
+
+    private $ads;
+
+
 
     public function __construct()
     {
         // Roles des utilisateurs
         $this->roles = ['ROLE_USER'];
         $this->DateRegistered = new \DateTime('now');
+        $this->ads = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -221,6 +232,28 @@ class User implements UserInterface
     public function setOldPassword(string $oldPassword): void
     {
         $this->oldPassword = $oldPassword;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAds(): ArrayCollection
+    {
+        return $this->ads;
+    }
+
+    /**
+     * @param ArrayCollection $ads
+     */
+    public function setAds(ArrayCollection $ads): void
+    {
+        $this->ads = $ads;
+    }
+
+
+    public function addAdd(Ad $ad)
+    {
+        $this->ads[] = $ad;
     }
 
 
