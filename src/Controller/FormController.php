@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class FormController
  * @package App\Controller
- * @Route("/form/")
+ *
  */
 
 class FormController extends Controller

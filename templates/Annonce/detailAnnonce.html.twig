@@ -15,13 +15,10 @@
             <p class="card-text">{{   detailAnnonce.dateCreation | date('d/m/Y') }}</p>
             <a href="#" class="btn btn-primary">Réserver</a>
         </div>
-     <div id="map-container-google-2" class="z-depth-1-half map-container mx-auto map-responsive" style="height: 500px">
+     <div id="map-container-google-2" class="z-depth-1-half map-container mx-auto map-responsive" style="height: 175px">
          <iframe src="https://maps.google.com/maps?q={{ detailAnnonce.ville }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                  style="border:0" allowfullscreen></iframe>
      </div>
     </div>
-
-
-
 
 {% endblock %}
