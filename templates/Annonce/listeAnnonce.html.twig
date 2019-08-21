@@ -32,7 +32,9 @@
         </div>
     </nav>
     <br>
-     {{ tableauAnnonce | length }} annonce(s) trouvé(s)
+    {% if tableauAnnonce|length >0 %}
+     {{ tableauAnnonce | length }} annonce{% if tableauAnnonce|length >2 %}s {% endif %} trouvé{% if tableauAnnonce|length >2 %}s {% endif %}
+    {% endif %}
     <br><br>
     <div class="table-responsive">
     <table class="table">
