@@ -35,7 +35,6 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Confirmation du mot de passe'],
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe n\'est pas identique' ,
-                'mapped' => true,
                 'trim'=>true,
                 'label' => 'Confirmation du Mot de passe',
                 'constraints' => [

@@ -46,8 +46,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Le champ mot de passe ne peut pas être vide !")
-     *
      */
     private $password;
 
@@ -60,9 +58,8 @@ class User implements UserInterface
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Le champ mot de passe ne peut pas être vide !")
      */
-
     private $plainPassword;
 
     /**
@@ -80,6 +77,7 @@ class User implements UserInterface
     {
         // Roles des utilisateurs
         $this->roles = ['ROLE_USER'];
+        $this->DateRegistered = new \DateTime('now');
     }
 
 
