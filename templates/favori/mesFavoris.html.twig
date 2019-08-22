@@ -59,7 +59,7 @@
 
 
                 <tr>
-                    <th><i class="fa fa-star" aria-hidden="true"></i></th>
+                    <th><a href="{{ path('ajoutFavori') }}?id={{ Ad.id  }}"  ><i class="fa fa-star" aria-hidden="true"></i></a></th>
                     <td><a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} </a></td>
                     <td>{{ Ad.description }}</td>
                     <td>{{ Ad.ville }}</td>
