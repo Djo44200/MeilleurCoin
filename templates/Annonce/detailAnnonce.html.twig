@@ -16,8 +16,11 @@
             <p class="card-text">{{ detailAnnonce.prix }} €</p>
             <p class="card-text">{{ detailAnnonce.dateCreation | date('d/m/Y') }}</p>
 
-            {% if detailAnnonce.user.pseudo != idUser.pseudo %}
-            <a href="#" class="btn btn-primary">Réserver</a>
+            {% if detailAnnonce.user.email != idUser.email %}
+            <p><a href="#" class="btn btn-primary">Réserver</a></p>
+            {% endif %}
+            {% if detailAnnonce.user.email != idUser.email %}
+            <p><a href="{{ path('favori') }}?id={{ detailAnnonce.id  }}" class="btn btn-primary">Ajouter en favori</a></p>
             {% endif %}
         </div>
      <div id="map-container-google-2" class="z-depth-1-half map-container mx-auto map-responsive" style="height: 175px">

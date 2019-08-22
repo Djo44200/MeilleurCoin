@@ -20,7 +20,7 @@ class AdRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Ad::class);
     }
-
+    // Toutes les annonces
     public function annonceGlobale() : array{
 
         return $this    ->createQueryBuilder('a')
@@ -28,6 +28,8 @@ class AdRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    // Afficher les détails d'une annonce
     public function annonceById($id) : ?Ad {
 
         try {
@@ -39,7 +41,7 @@ class AdRepository extends ServiceEntityRepository
         } catch (NonUniqueResultException $e) {
         }
     }
-
+    // Afficher mes annonces
     public function annonceByUser($idUser) : ?array {
 
         try {
@@ -53,7 +55,7 @@ class AdRepository extends ServiceEntityRepository
     }
 
 
-
+    // Recherche toutes annonces
     public function findAllOrderBy()
     {
         return $this->createQueryBuilder('a')
@@ -62,7 +64,7 @@ class AdRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
+    // Tri de toutes les annonces par catégories
     public function triParCate($categorie)
     {
         return $this->createQueryBuilder('a')
@@ -73,7 +75,7 @@ class AdRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-
+    // Tri de mes annonces par catégorie
     public function triParCateParUser($categorie,$id)
     {
         return $this->createQueryBuilder('a')
@@ -87,18 +89,29 @@ class AdRepository extends ServiceEntityRepository
             ;
     }
 
-
-    public function nombreAnnonces($categorie) :?int
+    // Tri des favoris par catégorie et par user
+    public function triFavoriParCategorieParUser($categorie,$user)
     {
-        try {
+
+        return $this->createQueryBuilder('a')
+            ->where('a.categorie=:cate')
+            ->setParameter('cate', $categorie)
+            ->andWhere(':user MEMBER OF a.users')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+
+    }
+    // Affichage de mes favoris
+    public function favoriParUser($user)
+    {
+
             return $this->createQueryBuilder('a')
-                ->select('count (a.id)')
-                ->where('a.categorie=:cate')
-                ->setParameter('cate', $categorie)
+                ->where(':user MEMBER OF a.users')
+                ->setParameter('user', $user)
                 ->getQuery()
-                ->getSingleScalarResult();
-        } catch (NonUniqueResultException $e) {
-        }
+                ->getResult();
+
     }
     /*
     public function findOneBySomeField($value): ?Ad
