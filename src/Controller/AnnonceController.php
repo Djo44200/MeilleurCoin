@@ -85,8 +85,6 @@ class AnnonceController extends Controller
         }
 
 
-
-
         return $this->render('Annonce/mesAnnonces.html.twig', ['listeAnnonce' => $listeAnnonce, "tableauCate" =>$listeCate
         ]);
     }

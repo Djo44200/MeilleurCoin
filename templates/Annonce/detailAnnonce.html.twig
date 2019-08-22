@@ -14,7 +14,7 @@
             <p class="card-text">{{ detailAnnonce.description }}</p>
             <p class="card-text">{{ detailAnnonce.cp }} - {{ detailAnnonce.ville }}</p>
             <p class="card-text">{{ detailAnnonce.prix }} €</p>
-            <p class="card-text">{{   detailAnnonce.dateCreation | date('d/m/Y') }}</p>
+            <p class="card-text">{{ detailAnnonce.dateCreation | date('d/m/Y') }}</p>
 
             {% if detailAnnonce.user.pseudo != idUser.pseudo %}
             <a href="#" class="btn btn-primary">Réserver</a>

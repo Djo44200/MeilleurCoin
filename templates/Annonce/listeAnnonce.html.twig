@@ -32,10 +32,11 @@
         </div>
     </nav>
     <br>
-    {% if tableauAnnonce|length >0 %}
-     {{ tableauAnnonce | length }} annonce{% if tableauAnnonce|length >2 %}s {% endif %} trouvé{% if tableauAnnonce|length >2 %}s {% endif %}
-    {% endif %}
+
+     {{ tableauAnnonce | length }} annonce{% if tableauAnnonce|length >1 %}s {% endif %} trouvé{% if tableauAnnonce|length >1 %}s {% endif %}
+
     <br><br>
+    {% if tableauAnnonce|length >0 %}
     <div class="table-responsive">
     <table class="table">
         <thead>
@@ -67,6 +68,7 @@
 
     {% endfor %}
     </table>
+        {% endif %}
         {% if tableauAnnonce|length <1 %}
             <div class="text-center">
                 <img class="img-fluid" src="{{ asset('build/images/sorry.jpg') }}" alt="Responsive image" rel="troc" data-toggle="popover" title="Informations" data-trigger="hover" />
