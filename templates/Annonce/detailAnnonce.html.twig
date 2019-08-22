@@ -15,7 +15,10 @@
             <p class="card-text">{{ detailAnnonce.cp }} - {{ detailAnnonce.ville }}</p>
             <p class="card-text">{{ detailAnnonce.prix }} €</p>
             <p class="card-text">{{   detailAnnonce.dateCreation | date('d/m/Y') }}</p>
+
+            {% if detailAnnonce.user.pseudo != idUser.pseudo %}
             <a href="#" class="btn btn-primary">Réserver</a>
+            {% endif %}
         </div>
      <div id="map-container-google-2" class="z-depth-1-half map-container mx-auto map-responsive" style="height: 175px">
          <iframe src="https://maps.google.com/maps?q={{ detailAnnonce.ville }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"

@@ -48,6 +48,8 @@ class AnnonceController extends Controller
      */
     public function detailAnnonce(EntityManagerInterface $entityManager, Request $request)
     {
+        $idUser = $this->getUser();
+
         $id=$request->query->get('id');
 
         if ($id){
@@ -58,7 +60,7 @@ class AnnonceController extends Controller
             throw  $this->createNotFoundException('Cette annonce n\'existe pas.');
         }
 
-        return $this->render('Annonce/detailAnnonce.html.twig', ['detailAnnonce' => $annonce
+        return $this->render('Annonce/detailAnnonce.html.twig', ['detailAnnonce' => $annonce, 'idUser' => $idUser
         ]);
     }
 
