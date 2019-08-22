@@ -75,7 +75,7 @@ class User implements UserInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="ads")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ad", inversedBy="users")
      * @ORM\JoinTable(name="Users_Ads")
      */
 
@@ -257,9 +257,9 @@ class User implements UserInterface
     }
 
 
-    public function addAdd(Ad $ad)
+    public function addAds(Ad $ad)
     {
-        $this->ads[] = $ad;
+        $this->ads -> add($ad) ;
     }
 
     /**
