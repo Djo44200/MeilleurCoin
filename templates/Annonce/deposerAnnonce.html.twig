@@ -28,19 +28,17 @@
         </div>
         <div class="form-group ">
 
-            {{ form_label(formDepose.ville)}}
-            {{form_widget(formDepose.ville, {'attr': {'class':'form-control'}})}}
-            {{ form_errors(formDepose.ville) }}
-        </div>
-
-        <div class="form-group ">
-
             {{ form_label(formDepose.cp)}}
             {{form_widget(formDepose.cp, {'attr': {'class':'form-control'}})}}
             {{ form_errors(formDepose.cp) }}
 
         </div>
+        <div class="form-group ">
 
+            {{ form_label(formDepose.ville)}}
+            {{form_widget(formDepose.ville, {'attr': {'class':'form-control'}})}}
+            {{ form_errors(formDepose.ville) }}
+        </div>
         <div class="form-group ">
 
             {{ form_label(formDepose.prix)}}

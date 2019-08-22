@@ -75,14 +75,14 @@ class AnnonceController extends Controller
         $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
 
         if ($cate) {
-            $req = $entityManager->getRepository('App:Ad')->triParCate($cate);
+            $listeAnnonce = $entityManager->getRepository('App:Ad')->triParCateParUser($cate,$this->getUser());
         }
         if (!$cate) {
 
-            $req = $entityManager->getRepository('App:Ad')->findAllOrderBy();
+            $listeAnnonce = $entityManager->getRepository('App:Ad') ->annonceByUser($this->getUser());
         }
 
-        $listeAnnonce = $entityManager->getRepository('App:Ad') ->annonceByUser($this->getUser());
+
 
 
         return $this->render('Annonce/mesAnnonces.html.twig', ['listeAnnonce' => $listeAnnonce, "tableauCate" =>$listeCate
