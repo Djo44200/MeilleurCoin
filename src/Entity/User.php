@@ -240,26 +240,22 @@ class User implements UserInterface
         $this->oldPassword = $oldPassword;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getAds(): ArrayCollection
-    {
-        return $this->ads;
-    }
 
-    /**
-     * @param ArrayCollection $ads
-     */
-    public function setAds(ArrayCollection $ads): void
+    public function getAds()
     {
-        $this->ads = $ads;
+
+        return $this->ads;
     }
 
 
     public function addAds(Ad $ad)
     {
-        $this->ads -> add($ad) ;
+
+        if (!$this->ads -> contains($ad)){
+            $this->ads->add($ad);
+        }else{
+            $this->ads->removeElement($ad);
+        }
     }
 
     /**

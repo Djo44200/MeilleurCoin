@@ -61,6 +61,6 @@ class favoriController extends Controller
         $entityManager->flush();
 
 
-        return $this->render('Accueil/accueil.html.twig');
+        return $this->redirectToRoute('favori');
     }
 }

@@ -185,7 +185,11 @@ class Ad
     public function addUser(User $user)
     {
         //$user->addUser($this); // synchronously updating inverse side
-        $this->users->add($user) ;
+        if (!$this->users -> contains($user)){
+            $this->users->add($user);
+        }else{
+            $this->users->removeElement($user);
+        }
     }
 
 

@@ -19,8 +19,8 @@
             {% if detailAnnonce.user.email != idUser.email %}
             <p><a href="#" class="btn btn-primary">Réserver</a></p>
             {% endif %}
-            {% if detailAnnonce.user.email != idUser.email %}
-            <p><a href="{{ path('ajoutFavori') }}?id={{ detailAnnonce.id  }}" class="btn btn-primary">Ajouter en favori</a></p>
+            {% if detailAnnonce.user.email != idUser.email  %}
+            <p><a href="{{ path('ajoutFavori') }}?id={{ detailAnnonce.id  }}" class="btn {{ (detailAnnonce in app.user.ads)?"btn-danger ":"btn-primary"  }}"> {{ (detailAnnonce in app.user.ads)?"Retirer des ":"Ajouter aux "  }}favoris</a></p>
             {% endif %}
         </div>
      <div id="map-container-google-2" class="z-depth-1-half map-container mx-auto map-responsive" style="height: 175px">
