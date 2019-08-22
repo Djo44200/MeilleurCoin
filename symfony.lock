@@ -117,6 +117,9 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
+    "pugx/autocompleter-bundle": {
+        "version": "v1.4.3"
+    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
