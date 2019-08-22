@@ -7,8 +7,7 @@
     <div class="container-fluid">
     <div class="form-group ">
     {{ form_start(formDepose) }}
-
-
+        <div class="form-group ">
         {{ form_label(formDepose.titre)}}
         {{form_widget(formDepose.titre, {'attr': {'class':'form-control'}})}}
         {{ form_errors(formDepose.titre) }}
@@ -19,6 +18,13 @@
         {{form_widget(formDepose.categorie, {'attr': {'class':'form-control'}})}}
         {{ form_errors(formDepose.categorie) }}
     </div>
+        <div class="form-group ">
+
+            {{ form_label(formDepose.filename)}}
+            {{form_widget(formDepose.filename, {'attr': {'class':'form-control'}})}}
+            {{ form_errors(formDepose.filename) }}
+        </div>
+
 
         <div class="form-group ">
 

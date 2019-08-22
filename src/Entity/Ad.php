@@ -81,6 +81,29 @@ class Ad
     private $user;
 
     /**
+     * @ORM\Column(type="string",nullable=true)
+     *
+     */
+    private $fileName;
+
+    public function getFilename() :? string
+    {
+        return $this->fileName;
+    }
+
+    public function setFilename($Filename) :string
+    {
+        $this->fileName = $Filename;
+
+        return $this;
+    }
+
+
+
+
+
+
+    /**
      * @return mixed
      */
     public function getCategorie()

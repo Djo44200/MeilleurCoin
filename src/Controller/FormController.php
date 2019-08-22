@@ -8,6 +8,9 @@ use App\Entity\Ad;
 use App\Form\AdType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,12 +37,31 @@ class FormController extends Controller
 
         if ($formAnnonce->isSubmitted() && $formAnnonce->isValid()) {
 
+            /** @var UploadedFile $imageFile */
+            $imageFile = $formAnnonce['filename']->getData();
             $user = $this->getUser();
             $annonce->setUser($user);
+
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $annonce->setFilename($newFilename);
+            }
+
             // Message de confirmation
             $this->addFlash("success", "Votre annonce a été enregistré !");
 
-            // Enregistrement dans la BDD
+                // Enregistrement dans la BDD
             $entityManager->persist($annonce);
             $entityManager->flush();
 
