@@ -31,9 +31,7 @@ class AdType extends AbstractType
             ->add('categorie',EntityType::class,[
 
                 'class' => Categorie::class,
-                'choice_label' => function ($categorie){
-                return $categorie->getLibelle();
-                },
+                'choice_label' => 'libelle',
                 "trim" => true,
                 "label" => "Categorie",
             ])
@@ -52,7 +50,7 @@ class AdType extends AbstractType
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
-                        'mimeTypesMessage' => 'Merci de mettre une image',
+
                     ])
                 ],
             ])
