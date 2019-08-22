@@ -25,12 +25,23 @@ class favoriController extends Controller
         //  Avoir la liste des catégories
         $listeCate = $entityManager->getRepository('App:Categorie')->findAll();
 
+        // Récupération Requête de la barre de recherche
+        $recherche = $request->query->get('search');
+
         if ($cate) {
             $listeFarori = $entityManager->getRepository('App:Ad')->triFavoriParCategorieParUser($cate,$this->getUser());
         }
         if (!$cate) {
+            if (!$recherche) {
 
-            $listeFarori = $entityManager->getRepository('App:Ad') ->favoriParUser($this->getUser());
+                $listeFarori = $entityManager->getRepository('App:Ad')->favoriParUser($this->getUser());
+            }
+
+            // Recherche d'une annonce
+            if ($recherche){
+
+                $listeFarori = $entityManager->getRepository('App:Ad')->actionRechercheParUserParFavori($recherche,$this->getUser());
+            }
         }
 
 
@@ -52,7 +63,7 @@ class favoriController extends Controller
         $user -> addAds($annonce);
 
         // Message de confirmation
-        $this->addFlash("success", "Favori sauvegardé !");
+        $this->addFlash("success", "Modification du favori !");
 
 
         // Enregistrement dans la BDD

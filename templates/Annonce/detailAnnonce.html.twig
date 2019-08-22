@@ -5,6 +5,7 @@
 <br>
 
 
+
  <div class="card border-info mb-12 text-center mx-auto" style="max-width: 23rem;">
      <div class="card-header">Annonce n° {{ detailAnnonce.id }} par {{ detailAnnonce.user.pseudo }}</div>
      <div class="card-header"><h5>{{ detailAnnonce.categorie.getLibelle() }}</h5></div>
@@ -13,7 +14,8 @@
             <h5 class="card-title">{{ detailAnnonce.titre }}</h5>
             <p class="card-text">{{ detailAnnonce.description }}</p>
             <p class="card-text">{{ detailAnnonce.cp }} - {{ detailAnnonce.ville }}</p>
-            <p class="card-text">{{ detailAnnonce.prix }} €</p>
+            <p class="card-text">{{ detailAnnonce.prix }} €
+            </p>
             <p class="card-text">{{ detailAnnonce.dateCreation | date('d/m/Y') }}</p>
 
             {% if detailAnnonce.user.email != idUser.email %}

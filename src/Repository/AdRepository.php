@@ -113,6 +113,46 @@ class AdRepository extends ServiceEntityRepository
                 ->getResult();
 
     }
+
+
+    // Recherche sur toutes les annonces
+    public function actionRecherche($data){
+
+        return $this->createQueryBuilder('a')
+            ->where('a.titre LIKE :data')
+            ->setParameter('data', '%'.$data.'%')
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    // Recherches sur les annonces d'un user
+    public function actionRechercheParUser($data,$user){
+
+        return $this->createQueryBuilder('a')
+            ->where('a.titre LIKE :data')
+            ->setParameter('data', '%'.$data.'%')
+            ->andWhere('a.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    // Recherches sur les favoris d'un user
+    public function actionRechercheParUserParFavori($data,$user){
+
+
+        return $this->createQueryBuilder('a')
+            ->where(':user MEMBER OF a.users')
+            ->setParameter('user', $user)
+            ->AndWhere('a.titre LIKE :data')
+            ->setParameter('data', '%'.$data.'%')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     /*
     public function findOneBySomeField($value): ?Ad
     {
