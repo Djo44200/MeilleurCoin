@@ -53,6 +53,7 @@
 
             {% for Ad in listeAnnonce %}
 
+
                 <tr>
                     <td><a href="{{ path('detail') }}?id={{ Ad.id  }}"> {{ Ad.titre }} </a></td>
                     <td>{{ Ad.description }}</td>
@@ -67,6 +68,11 @@
 
             {% endfor %}
         </table>
+        {% if listeAnnonce|length <1 %}
+            <div class="text-center">
+                <img class="img-fluid" src="{{ asset('build/images/sorry.jpg') }}" alt="Responsive image" rel="troc" data-toggle="popover" title="Informations" data-trigger="hover" />
+            </div>
+        {% endif %}
     </div>
 
 
