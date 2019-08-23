@@ -152,7 +152,6 @@ class Ad
     {
         return $this->ville;
     }
-
     public function setVille(string $ville): self
     {
         $this->ville = strtoupper($ville);
