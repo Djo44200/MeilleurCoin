@@ -5,6 +5,7 @@
         "php": "^7.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "knplabs/knp-paginator-bundle": "^4.0",
         "pugx/autocompleter-bundle": "^1.4",
         "symfony/console": "3.4.*",
         "symfony/dotenv": "3.4.*",
