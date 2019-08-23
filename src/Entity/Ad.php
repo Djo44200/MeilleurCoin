@@ -155,7 +155,7 @@ class Ad
 
     public function setVille(string $ville): self
     {
-        $this->ville = $ville;
+        $this->ville = strtoupper($ville);
 
         return $this;
     }
