@@ -52,7 +52,7 @@ class FormController extends Controller
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+
                 }
                 $annonce->setFilename($newFilename);
             }

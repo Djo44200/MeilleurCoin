@@ -91,11 +91,11 @@ class Ad
         return $this->fileName;
     }
 
-    public function setFilename($Filename) :string
+    public function setFilename($Filename) :void
     {
+
         $this->fileName = $Filename;
 
-        return $this;
     }
 
 
