@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 
 class AdType extends AbstractType
@@ -48,8 +49,13 @@ class AdType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',
-
+                        'maxSize' => '500k',
+                        'mimeTypesMessage' =>'Merci de mettre une image',
+                        'mimeTypes' =>[
+                            'image/gif',
+                            'image/jpeg',
+                            'image/png',
+                        ]
                     ])
                 ],
             ])

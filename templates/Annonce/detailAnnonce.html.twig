@@ -13,7 +13,9 @@
 
             <h5 class="card-title">{{ detailAnnonce.titre }}</h5>
             <p class="card-text">{{ detailAnnonce.description }}</p>
-            <p class="card-text"><img src="{{ asset('uploads/images/'~ detailAnnonce.filename) }}"></p>
+            {% if detailAnnonce.filename  %}
+            <p class="card-text"><img class="img-fluid" src="{{ asset('uploads/images/'~ detailAnnonce.filename) }}"alt="Responsive image" rel="detailAnnonce" data-toggle="popover" data-trigger="hover" /></p>
+            {% endif %}
             <p class="card-text">{{ detailAnnonce.cp }} - {{ detailAnnonce.ville }}</p>
             <p class="card-text">{{ detailAnnonce.prix }} €
             </p>
