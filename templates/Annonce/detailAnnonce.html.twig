@@ -21,7 +21,7 @@
             </p>
             <p class="card-text">{{ detailAnnonce.dateCreation | date('d/m/Y') }}</p>
 
-            {% if detailAnnonce.user.email != idUser.email  %}
+            {% if detailAnnonce.user.email != idUser.email %}
             <p><a href="#" class="btn btn-primary">Réserver</a></p>
             {% endif %}
             {% if detailAnnonce.user.email != idUser.email  %}
